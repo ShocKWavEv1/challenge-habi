@@ -18,7 +18,7 @@ export const Button = styled('button')(
         }
       },
       outline: {
-        color: 'white',
+        color: 'black.500',
         backgroundColor: 'white',
         border: "solid 2px black",
         padding: "14px 35px",
