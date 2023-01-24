@@ -33,7 +33,7 @@ export const Button = styled('button')(
         }
       },
       inverted: {
-        color: 'black',
+        color: 'black.500',
         backgroundColor: 'white',
         border: "solid 2px white",
         padding: "14px 35px",
