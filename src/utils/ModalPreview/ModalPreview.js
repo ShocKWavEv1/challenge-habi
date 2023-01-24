@@ -8,8 +8,6 @@ import EmptyState from "../EmptyState/EmptyState"
 const ModalPreview = ({ isModal, handleModal }) => {
     const contextService = useContext(MainContext);
 
-    console.log(contextService.payload)
-
     return(
         isModal &&
             <Modal>

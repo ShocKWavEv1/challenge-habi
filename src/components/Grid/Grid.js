@@ -46,7 +46,8 @@ export const FormPanel = styled.section`
 
 export const ResultsPanel = styled.section`
     width: 30%;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
     display: flex;
     flexDirection: row;
     background-color: ${props => props.theme.colors.black["500"]};

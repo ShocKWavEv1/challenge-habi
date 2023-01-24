@@ -5,7 +5,7 @@ export const initialState = {
     floor:  localStorage.getItem("floor"),
     amenidades:  localStorage.getItem("amenidades"),
     parking: localStorage.getItem("parking"),
-    parkingType: localStorage.getItem("parkingType"),
+    parkingCover: localStorage.getItem("parkingCover"),
     monto: localStorage.getItem("monto"),
     elevator:  localStorage.getItem("elevator"),
 }

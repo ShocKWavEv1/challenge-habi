@@ -153,7 +153,7 @@ export const routes = [
                 subOptions: {
                     label: "El estacionamiento está cubierto?",
                     type: "radio",
-                    name: "parkingType",
+                    name: "parkingCover",
                     options: ["Sí", "No"],
                     required: true
                 },

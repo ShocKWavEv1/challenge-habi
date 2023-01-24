@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import CurrencyInput from "react-currency-input-field";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom"
@@ -13,10 +13,14 @@ const FormBody = ({ pageData, totalSteps }) => {
 
     const contextService = useContext(MainContext);
 
+    const [showToggle, setShowToggle] = useState(false);
+
     const nameForm = pageData.fields.input.name;
 
     useEffect(() => {
         // eslint-disable-next-line
+        contextService.payload?.parking === "Sí" ? setShowToggle(true) : setShowToggle(false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [contextService]);
 
 	const {
@@ -27,9 +31,12 @@ const FormBody = ({ pageData, totalSteps }) => {
 	} = useForm({ mode: "onChange", reValidateMode: "onChange" });
 
 	const onSubmit = (data) => {
-        contextService.handlePayload({[nameForm]: data[nameForm]}, nameForm)
-        localStorage.setItem([nameForm], data[nameForm]);
-        localStorage.setItem("currentIdx", pageData.component.nextStep);
+        // eslint-disable-next-line array-callback-return
+        Object.keys(data).map((key, idx) => {
+            contextService.handlePayload({[key]: data[key]}, nameForm === "parking" ? [key] : nameForm)
+            localStorage.setItem([key], data[key]);
+            localStorage.setItem("currentIdx", pageData.component.nextStep);
+        })
         unregister(pageData.fields.input.name);
 		navigate(`${pageData.component.nextStep}`);
 	};
@@ -74,42 +81,53 @@ const FormBody = ({ pageData, totalSteps }) => {
                                                 value={option}
                                                  {...register(pageData.fields.input.name, {
                                                     value: contextService.payload[nameForm] === null || contextService.payload[nameForm] === undefined ? "" : contextService.payload[nameForm],
+                                                    onChange: (e) =>
+                                                    e.target.value === "Sí"
+                                                        ? setShowToggle(true)
+                                                        : setShowToggle(false),
                                                     required: pageData.fields.input.required ? "Este campo es requerido" : null,
                                                 })}
                                             ></input>
                                             <Text variant="XSMEDIUM" htmlFor={option}>{option}</Text>
                                         </RadioContainer>
                                     ))}
-                                    {/*
-                                        pageData.fields.input.subOptions &&
-                                        <div style={{ width: "100%" }} >
-                                            <Text variant="LGBOLD" >
-                                                {pageData.fields.input.subOptions.label}
-                                             </Text>
-                                            {
-                                                pageData.fields.input.subOptions.options.map((subOption) => (
-                                                    <RadioContainer key={subOption}>
-                                                        <input
-                                                            type="radio"
-                                                            id={subOption}
-                                                            name={pageData.fields.input.subOptions.name}
-                                                            value={subOption}
-                                                            {...register(pageData.fields.input.subOptions.name, 
-                                                                {
-                                                                    value: "",
-                                                                    onChange: (e) => console.log(e),
-                                                                    required: pageData.fields.input.subOptions.required ? "Este campo es requerido" : null,
-                                                                })}
-                                                        ></input>
-                                                        <Text variant="XSMEDIUM" htmlFor={subOption}>
-                                                            {subOption}
-                                                        </Text>
-                                                    </RadioContainer>
-                                                                                                
-                                                ))
-                                            }
+                                </div>
+                            }
+                            {
+                                showToggle && pageData.fields.input?.subOptions &&
+                                <div style={{ width: "100%", marginTop: "20px" }} >
+                                    <Text variant="LGBOLD" >
+                                        {pageData.fields.input.subOptions.label}
+                                    </Text>
+                                    <div style={{ width: "250px", marginTop: "20px" }}>
+                                        {
+                                            pageData.fields.input.subOptions.options.map((subOption) => (
+                                                <RadioContainer key={subOption}>
+                                                    <input
+                                                        type="radio"
+                                                        id={subOption}
+                                                        name={pageData.fields.input.subOptions.name}
+                                                        value={subOption}
+                                                        {...register(pageData.fields.input.subOptions.name, 
+                                                            {
+                                                                value: contextService.payload.parkingCover === null || contextService.payload.parkingCover === undefined ? "" : contextService.payload.parkingCover,
+                                                                required: pageData.fields.input.subOptions.required ? "Este campo es requerido" : null,
+                                                            })}
+                                                    ></input>
+                                                    <Text variant="XSMEDIUM" htmlFor={subOption}>
+                                                        {subOption}
+                                                    </Text>
+                                                </RadioContainer>                                              
+                                            ))
+                                        }
+                                    </div>
+                                    {errors[pageData.fields.input.subOptions.name] && (
+                                        <div style={{ marginTop: "10px" }} >
+                                            <Text variant={["XSMEDIUM", "XSMEDIUM", "XSMEDIUM", "XSMEDIUM"]} color="error">
+                                                {errors[pageData.fields.input.subOptions.name]?.message}
+                                            </Text>
                                         </div>
-                                    */}
+                                    )}
                                 </div>
                             }
                             {
