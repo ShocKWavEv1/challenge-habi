@@ -8,12 +8,12 @@ const Landing = () => {
     return(
         <div style={{ width: "100%", height: "100vh", position: "relative", zIndex: 0, backgroundColor: "black", backgroundImage: `url(${bg})`, backgroundSize: "cover", backgroundPosition: "center", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }} >
             <div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", flexDirection: "column", position: "absolute", zIndex: 1, backgroundColor: "rgba(21,26,48, .7)" }} >
-                <Heading variant="H6BOLD" color="white" >
+                <Heading variant="H5BOLD" color="white" >
                     Compramos tu depa o casa
                 </Heading>
                 <div style={{ marginTop: "20px" }} >
                     <Button onClick={() => {navigate("/datos"); localStorage.setItem("currentIdx", "/datos")}} variant="inverted" >
-                        Solicitar oferta
+                        Solicita una oferta
                     </Button>
                 </div>
             </div>

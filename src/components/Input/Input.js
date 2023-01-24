@@ -9,6 +9,6 @@ export const Input = styled.input`
     color: ${props => props.theme.colors.black["500"]};
     background-color: white;
     ::placeholder {
-        color: ${props => props.theme.colors.black["300"]};
+        color: ${props => props.theme.colors.black["400"]};
     }
 `;

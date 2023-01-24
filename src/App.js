@@ -11,7 +11,7 @@ function App() {
   const [currentIdx, handleCurrentIdx] = useState(localStorage.getItem("currentIdx"));
   const [payload, setPayload] = useState(initialState);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
 	const currentStep = localStorage.getItem("currentIdx");
 
