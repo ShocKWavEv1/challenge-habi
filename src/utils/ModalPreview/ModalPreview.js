@@ -36,7 +36,7 @@ const ModalPreview = ({ isModal, handleModal }) => {
                             Object.keys(contextService.payload).map((key, idx) => {
                                 if(contextService.payload[key]) {
                                     return(
-                                        <div key={idx} style={{ width: "100%", margin: "10px 0px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }} >
+                                        <div key={idx} style={{ width: "100%", textAlign: "center", margin: "10px 0px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }} >
                                             <Text variant="XSMEDIUM" color="black.500" >
                                                 {key} : {contextService.payload[key]}
                                             </Text>
