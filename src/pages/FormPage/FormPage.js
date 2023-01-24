@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { Button } from "../../components/Button/Button";
 import { Divider } from "../../components/Divider/Divider";
 import { Container, FormPanel, ResultsPanel, ResultsPreview } from "../../components/Grid/Grid";
 import { Modal, ModalBody, ModalClose, ModalContainer, ModalHeader } from "../../components/Modal/Modal";
@@ -56,6 +55,7 @@ const FormPage = ({ pageData, totalSteps }) => {
                         <ModalBody>
                             {
                                 contextService.payload?.fullName === null || contextService.payload?.fullName === undefined ? <EmptyState color="black.500" /> :
+                                // eslint-disable-next-line array-callback-return
                                 Object.keys(contextService.payload).map((key, idx) => {
                                     if(contextService.payload[key]) {
                                         return(

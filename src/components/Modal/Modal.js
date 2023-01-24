@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { devices } from "../../theme/system/breakpoints/breakpoints";
 
 export const Modal = styled.section`
     width: 100%;

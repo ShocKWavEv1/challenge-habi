@@ -25,7 +25,6 @@ function App() {
   }
 
   const handlePayload = (value, nameForm) => {
-    console.log(value[nameForm], nameForm)
     setPayload(prevState => ({
       ...prevState,
       [nameForm]: value[nameForm]

@@ -13,6 +13,7 @@ const ResultPage = () => {
 
     const handleReset = () => {
         localStorage.setItem("currentIdx", ""); 
+        // eslint-disable-next-line array-callback-return
         Object.keys(contextService.payload).map((key, idx) => {
             localStorage.setItem([key], "");
         })
@@ -27,6 +28,7 @@ const ResultPage = () => {
             </Heading>
             <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }} >
                 {
+                    // eslint-disable-next-line array-callback-return
                     Object.keys(contextService.payload).map((key, idx) => {
                         if(contextService.payload[key]) {
                             return(

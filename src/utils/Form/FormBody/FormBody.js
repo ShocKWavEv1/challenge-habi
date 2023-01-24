@@ -16,7 +16,6 @@ const FormBody = ({ pageData, totalSteps }) => {
     const nameForm = pageData.fields.input.name;
 
     useEffect(() => {
-        console.log(contextService.payload[nameForm], nameForm);
         // eslint-disable-next-line
     }, [contextService]);
 
@@ -75,7 +74,6 @@ const FormBody = ({ pageData, totalSteps }) => {
                                                 value={option}
                                                  {...register(pageData.fields.input.name, {
                                                     value: contextService.payload[nameForm] === null || contextService.payload[nameForm] === undefined ? "" : contextService.payload[nameForm],
-                                                    onChange: (e) => console.log(e),
                                                     required: pageData.fields.input.required ? "Este campo es requerido" : null,
                                                 })}
                                             ></input>
