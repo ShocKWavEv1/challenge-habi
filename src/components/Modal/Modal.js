@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Modal = styled.section`
     width: 100%;
     min-height: 100vh;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
